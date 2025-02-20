@@ -46,7 +46,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className={`${!theme ? "bg-[#41729F]" : 'bg-[#BCECE0]'} min-h-screen`}>
       <Navbar addedProducts={addedProducts} products={products} increment={increment} theme={theme} />
       <Items products={products} reset={reset} deleteAll={deleteAll} increment={increment} decrement={decrement} deleteItem={deleteItem} theme={theme} switchTheme={switchTheme} />
     </div>
