@@ -8,9 +8,9 @@ const Navbar = ({addedProducts, products, increment, theme}) => {
     }
   })
   return (
-    <div className={`${theme ? 'bg-[#5885AF]' : 'bg-[#36EEE0]'} ${theme ? 'text-[#C3E0E5]' : 'text-[#4C5270]'} navbar fixed flex flex-row shadow-sm justify-around`}>
+    <div className={`${!theme ? 'bg-[#5885AF]' : 'bg-[#36EEE0]'} ${!theme ? 'text-[#C3E0E5]' : 'text-[#4C5270]'} navbar fixed flex flex-row shadow-sm justify-around`}>
       <div className="">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-xl">SupaCart</a>
       </div>
       <div>
         { addedProducts.map(({id,name}) => (

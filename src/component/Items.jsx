@@ -8,8 +8,8 @@ const Items = ({products, reset, deleteAll, increment, decrement, deleteItem, th
         total += product.price * product.items
     })
   return (
-    <div className={`${theme ? "bg-[#41729F]" : 'bg-[#BCECE0]'} min-h-screen flex flex-col justify-start items-center gap-10 p-5 pt-15 opacity-100`}>
-        <h1 className={`${theme ? 'text-[#C3E0E5]' : 'text-[#4C5270]'} text-2xl font-bold text-center p-3 rounded-3xl`}>
+    <div className={`${!theme ? "bg-[#41729F]" : 'bg-[#BCECE0]'} min-h-screen flex flex-col justify-start items-center gap-10 p-5 pt-15 opacity-100`}>
+        <h1 className={`${!theme ? 'text-[#C3E0E5]' : 'text-[#4C5270]'} text-2xl font-bold text-center p-3 rounded-3xl`}>
             Your Cart
         </h1>
         <div className='w-full flex flex-row gap-5 justify-around'>
