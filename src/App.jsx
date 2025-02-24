@@ -29,16 +29,25 @@ function App() {
     setProducts(products.map(product => product.id === id ? {...product, items: product.items + 1} : product))
   }
 
+  const addItem = (id) => {
+    if (products.find(product => product.id === id)) {
+      increment(id)
+    }
+    else {
+      setProducts([...products, ...addedProducts.filter(product => product.id === id)])
+    }
+  }
+
   const decrement = (id) => {
     setProducts(products.map(product => product.id === id ? {...product, items: product.items - 1} : product))
   }
 
   const deleteItem = (id) => {
-    setProducts(products.map(product => product.id === id ? {...product, items: product.items = 0} : product))
+    setProducts(products.filter(product => product.id !== id))
   }
 
   const deleteAll = () => {
-    setProducts(products.map(product => ({...product, items : product.items = 0})))
+    setProducts([])
   }
 
   const switchTheme = () => {
@@ -47,7 +56,7 @@ function App() {
 
   return (
     <div className={`${!theme ? "bg-[#41729F]" : 'bg-[#BCECE0]'} min-h-screen`}>
-      <Navbar addedProducts={addedProducts} products={products} increment={increment} theme={theme} />
+      <Navbar addedProducts={addedProducts} products={products} addItem={addItem} theme={theme} />
       <Items products={products} reset={reset} deleteAll={deleteAll} increment={increment} decrement={decrement} deleteItem={deleteItem} theme={theme} switchTheme={switchTheme} />
     </div>
   )

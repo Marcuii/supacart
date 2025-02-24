@@ -3,10 +3,6 @@ import Product from './Product'
 import { MdOutlineWbSunny, MdNightsStay } from "react-icons/md";
 
 const Items = ({products, reset, deleteAll, increment, decrement, deleteItem, theme, switchTheme}) => {
-    let total = 0
-    products.forEach(product => {
-        total += product.price * product.items
-    })
   return (
     <div className={`flex flex-col justify-start items-center gap-10 p-5 pt-15 opacity-100`}>
         <h1 className={`${!theme ? 'text-[#C3E0E5]' : 'text-[#4C5270]'} text-2xl font-bold text-center p-3 rounded-3xl`}>
@@ -19,8 +15,9 @@ const Items = ({products, reset, deleteAll, increment, decrement, deleteItem, th
                 { theme ? <MdNightsStay /> : <MdOutlineWbSunny /> }
             </button>
         </div>
-        { products.map((product) => ( product.items == 0 ? null : <Product key={product.id} {...product} increment={increment} decrement={decrement} deleteItem={deleteItem} theme={theme} />)) }
-        {total == 0 ? <h3 className="text-2xl text-error">Your card is empty!</h3> : <h3 className={`text-2xl ${!theme ? 'text-[#C3E0E5]' : 'text-[#4C5270]'}`}>Total: ${total}</h3>}
+        { products.map((product) => ( <Product key={product.id} {...product} increment={increment} decrement={decrement} deleteItem={deleteItem} theme={theme} />)) }
+        {products.length == 0 ? <h3 className="text-2xl text-error">Your card is empty!</h3> : 
+        <h3 className={`text-2xl ${!theme ? 'text-[#C3E0E5]' : 'text-[#4C5270]'}`}>Total: ${products.reduce((acc, product) => acc + product.items * product.price, 0)}</h3>}
     </div>
   )
 }

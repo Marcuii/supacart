@@ -11,7 +11,7 @@ const Product = ({id,name,price,items, increment, decrement, deleteItem, theme})
             <p>Items: {items}</p>
             <div className='col-span-2 lg:col-span-1 flex flex-row gap-5 justify-around '>
                 <button onClick={() => increment(id)} className="btn btn-primary">+</button>
-                <button onClick={() => items == 1 ? null : decrement(id)} className="btn btn-warning">-</button>
+                <button onClick={() => items > 1 && decrement(id)} className="btn btn-warning">-</button>
                 <button onClick={() => deleteItem(id)} className="btn btn-error">Delete</button>
             </div>
             <p className='col-span-2 lg:col-span-1'>Total: {price * items}</p>
